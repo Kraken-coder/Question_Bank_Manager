@@ -1,6 +1,6 @@
 import os
 
-GOOGLE_API_KEY = "AIzaSyD7rx81XWKCllmEfiBJRZ_81OZtt30bvqc"
+GOOGLE_API_KEY = ""
 
 # Database configuration with environment variable support
 DB_CONFIG = {
