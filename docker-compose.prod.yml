@@ -1,0 +1,72 @@
+services:
+  postgres:
+    image: postgres:14
+    container_name: indian_navy_postgres_prod
+    env_file: .env.production
+    environment:
+      POSTGRES_DB: ${DB_NAME:-question_bank}
+      POSTGRES_USER: ${DB_USER:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_HOST_AUTH_METHOD: md5
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - indian_navy_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-postgres} -d ${DB_NAME:-question_bank}"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: always
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.prod
+    container_name: indian_navy_backend_prod
+    env_file: .env.production
+    environment:
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_NAME=${DB_NAME:-question_bank}
+      - DB_USER=${DB_USER:-postgres}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - PYTHONPATH=/app
+      - PYTHONUNBUFFERED=1
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend/VectorDataBase:/app/VectorDataBase
+      - ./backend/question_bank:/app/question_bank
+      - ./backend/exports:/app/exports
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - indian_navy_network
+    restart: always
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.prod
+    container_name: indian_navy_frontend_prod
+    env_file: .env.production
+    ports:
+      - "80:80"
+    environment:
+      - REACT_APP_API_URL=${REACT_APP_API_URL}
+    depends_on:
+      - backend
+    networks:
+      - indian_navy_network
+    restart: always
+
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  indian_navy_network:
+    driver: bridge

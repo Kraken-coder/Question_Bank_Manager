@@ -1,0 +1,189 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# nyc test coverage
+.nyc_output
+
+# Grunt intermediate storage
+.grunt
+
+# Bower dependency directory
+bower_components
+
+# node_modules
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# dotenv environment variables file
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Vector database files
+VectorDataBase/
+chroma.sqlite3
+
+# Exports directory
+exports/
+*.pdf
+*.xlsx
+*.docx
+
+# Temporary files
+*.tmp
+*.temp
+temp/
+
+# Docker
+.dockerignore
+docker-compose.override.yml
+
+# Git
+.git/
+
+# Backup files
+*.bak
+*.backup
+
+# Configuration files with sensitive data
+config_local.py
+secrets.json
+
+# React build files
+frontend/build/
+frontend/dist/
+
+# Package files
+*.tgz
+*.tar.gz
+
+# Cache directories
+.cache/
+.parcel-cache/
+
+# Editor directories and files
+.vs/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Local development files
+local_settings.py
+development.db
+
+# Test files
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# macOS
+.AppleDouble
+.LSOverride
+
+# Windows
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+
+# PyCharm
+.idea/
+
+# VS Code
+.vscode/
+
+# Spyder
+.spyderproject
+.spyproject
+
+# Rope
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json

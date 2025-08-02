@@ -1,0 +1,24 @@
+# Simple Docker Compose for just PostgreSQL
+services:
+  postgres:
+    image: postgres:14
+    container_name: indian_navy_postgres
+    environment:
+      POSTGRES_DB: question_bank
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: diptanshu
+      POSTGRES_HOST_AUTH_METHOD: trust
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d question_bank"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:
+    driver: local
